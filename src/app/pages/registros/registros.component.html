@@ -1,0 +1,61 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<div class="container">
+    <h1>Registros</h1>
+    <div class="table-responsive">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">CodMat</th>
+                    <th scope="col">Materia</th>
+                    <th scope="col">Paralelo</th>
+                    <th scope="col">Horas</th>
+                    <th scope="col">Aula</th>
+                    <th scope="col">Ubicacion</th>
+                    <th scope="col">Funcion</th>
+                    <th scope="col">EST</th>
+                    <th scope="col">Numero Sesiones</th>
+                    <th scope="col">Lunes</th>
+                    <th scope="col">Martes</th>
+                    <th scope="col">Miercoles</th>
+                    <th scope="col">Jueves</th>
+                    <th scope="col">Viernes</th>
+                    <th scope="col">Sabado</th>
+                    <th scope="col">HSimul</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Final</th>
+                    <th scope="col">Horario Finla</th>
+                    <th scope="col">CodCar</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">Facultad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let registro of registros" class="">
+                    <td>{{registro.codmat}}</td>
+                    <td>{{registro.materia}}</td>
+                    <td>{{registro.paralelo}}</td>
+                    <td>{{registro.horas}}</td>
+                    <td>{{registro.aula}}</td>
+                    <td>{{registro.ubicacion}}</td>
+                    <td>{{registro.funcion}}</td>
+                    <td>{{registro.est}}</td>
+                    <td>{{registro.nroSesiones}}</td>
+                    <td>{{registro.lunes}}</td>
+                    <td>{{registro.martes}}</td>
+                    <td>{{registro.miercoles}}</td>
+                    <td>{{registro.jueves}}</td>
+                    <td>{{registro.viernes}}</td>
+                    <td>{{registro.sabado}}</td>
+                    <td>{{registro.hSimul}}</td>
+                    <td>{{registro.fechaI}}</td>
+                    <td>{{registro.fechaF}}</td>
+                    <td>{{registro.horarioF}}</td>
+                    <td>{{registro.codcar}}</td>
+                    <td>{{registro.carrera}}</td>
+                    <td>{{registro.facultad}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
