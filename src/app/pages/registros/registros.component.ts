@@ -9,8 +9,6 @@ import { RegistroHttpService } from 'src/app/services/registro-http.service';
 })
 export class RegistroComponent implements OnInit {
   registros: RegistroModel [] = [];
-selectRegistro: any;
-
   constructor (private registroHttpservices:RegistroHttpService) { 
 this.initRegistro();
   }

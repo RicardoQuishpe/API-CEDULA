@@ -8,7 +8,7 @@ import { RegistroModel } from '../modules/registro.model';
 })
 export class RegistroHttpService {
 
-  readonly API_URL:string = "http://172.31.5.24:8080/WSSIIEPN/webresources/SilaboEPN/carga/0501553408/2022/2";
+  readonly API_URL:string = "http://172.31.5.24:8080/WSSIIEPN/webresources/SilaboEPN/carga/0102007176/2020/1";
 
   constructor (private httpClient:HttpClient) { }
 
