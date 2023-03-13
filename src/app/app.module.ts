@@ -7,21 +7,23 @@ import { PagesComponent } from './pages/pages.component';
 import { RegistroComponent } from './pages/registros/registros.component';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { StaticModule } from "./pages/static/static.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PagesComponent,
-    RegistroComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ButtonModule,
-    TableModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PagesComponent,
+        RegistroComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ButtonModule,
+        TableModule,
+        StaticModule
+    ]
 })
 export class AppModule { }
