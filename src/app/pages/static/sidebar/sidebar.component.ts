@@ -11,25 +11,25 @@ export class SidebarComponent implements OnInit {
    ngOnInit() {
     this.gfg = [
       {
-        label: 'HTML',
+        label: 'Opcion 1',
         items: [
           {
-            label: 'HTML 1'
+            label: 'A'
           },
           {
-            label: 'HTML 2'
+            label: 'B'
           }
         ]
       },
       {
-        label: 'Angular',
+        label: 'Opcion2',
   
         items: [
           {
-            label: 'Angular 1'
+            label: 'A'
           },
           {
-            label: 'Angular 2'
+            label: 'B'
           }
         ]
       }

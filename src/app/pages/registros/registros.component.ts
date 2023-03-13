@@ -8,23 +8,48 @@ import { RegistroHttpService } from 'src/app/services/registro-http.service';
   styleUrls: ['./registros.component.css']
 })
 export class RegistroComponent implements OnInit {
-  registros: RegistroModel [] = [];
-  constructor (private registroHttpservices:RegistroHttpService) { 
-this.initRegistro();
+  registros: RegistroModel[] = [];
+  statuses: any[] = [];
+  loading: boolean = true;
+  activityValues: number[] = [0, 100];
+
+
+  constructor(private registroHttpservices: RegistroHttpService) {}
+
+  getEventValue($event: any): string {
+    return $event.target.value;
   }
-initRegistro(){
-}
+
   ngOnInit(): void {
     this.getRegistros();
+    this.cedulareg;
+    this.yearg;
   }
-  getRegistros(){
-    this.registroHttpservices.getAll().subscribe(
-      response => {
-this.registros=response;
-        console.log(response);
 
+  getRegistros(){
+  this.registroHttpservices.getAll().subscribe(
+    response => {
+      this.registros = response;
+      console.log(response);
     }
   );
+}
+
+cedulareg (cedula: string) {
+  this.registroHttpservices
+    .getOne(cedula).subscribe((response: RegistroModel[]) => {
+      this.registros = response;
+    });
+  console.log(this.registros);
+}
+
+
+yearg (year: string) {
+  this.registroHttpservices
+    .gettwo(year).subscribe((response: RegistroModel[]) => {
+      this.registros = response;
+    });
+  console.log(this.registros);
 }
 
 }
