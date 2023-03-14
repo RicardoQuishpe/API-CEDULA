@@ -81,35 +81,29 @@ https://primeng.org/table/selection
             </span>
         </div>
         <div class="p-input-icon-right p-ml-auto">
-            <form id="form" (submit)="cedulareg(cedula.value)">
-                <div class="p-fluid form__filter">
-                    <div class="p-field">
-                        <br>
-                        <span class="p-float-label">
-                            <input #cedula type="text" pInputText />
-                            <label for="cedula">Cedula</label>
-                        </span>
-                    </div>
-                    <br>
-                    <div class="p-field">
-                        <button class="p-button-rounded" type="submit" pButton>Buscar</button>
-                    </div>
+            <form id="form" (submit)="Datos(cedula.value, year.value, id.value)">
+                <div class="p-fluid form__filter" style="display: flex;">
+        
+                  <span>
+                    <input placeholder="cédula" #cedula type="number" pInputText style="margin-left: -20px;" />
+                  </span>
+        
+                  <span>
+                    <input placeholder="fecha" #year type="date" pInputText style="margin-left: -10px; " />
+                  </span>
+                  
+        
+                  <span class="p-float-label">
+                    <p-dropdown #id type="text"  [options]="[{label:'1', value:1}, {label:'2', value:2}]"></p-dropdown>
+                    <label for="id" style="color: rgb(255, 255, 255);">ID</label>
+                  </span>
+        
+                  <div class="p-field" style="margin-left: 5px;">
+                    <button class="p-button-rounded" type="submit" pButton icon="pi pi-search"></button>
+                  </div>
+                  <br>
                 </div>
-            </form>
-            <form id="form1" (submit)="yearg(year.value)">
-                <div class="p-fluid form__filter">
-                    <div class="p-field">
-                        <span class="p-float-label">
-                            <input #year type="text" pInputText />
-                            <label for="year">Año</label>
-                        </span>
-                    </div>
-                    <br>
-                    <div class="p-field">
-                        <button class="p-button-rounded" type="submit" pButton>Buscar</button>
-                    </div>
-                </div>
-            </form>
+              </form>
             
             <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
             selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" placeholder="Choose Columns"></p-multiSelect>

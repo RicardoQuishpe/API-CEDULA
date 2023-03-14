@@ -15,6 +15,7 @@ export class RegistroComponent implements OnInit {
   activityValues: number[] = [0, 100];
   cols: any[] = [];
   _selectedColumns: any[] = [];
+  
 
   constructor(private registroHttpservices: RegistroHttpService) { }
 
@@ -81,6 +82,15 @@ export class RegistroComponent implements OnInit {
       });
     console.log(this.registros);
   }
+
+  Datos(cedula: string, year: string, id:string) {
+    this.registroHttpservices
+    .datos(cedula, year, id).subscribe((response: RegistroModel[]) => {
+         this.registros= response;
+        });
+         console.log(this.registros)
+   }
+
 
 @Input() get selectedColumns(): any[] {
         return this._selectedColumns;
