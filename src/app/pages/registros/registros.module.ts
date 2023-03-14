@@ -8,7 +8,6 @@ import { ToastModule } from 'primeng/toast';
 import { CalendarModule } from 'primeng/calendar';
 import { SliderModule } from 'primeng/slider';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { ContextMenuModule } from 'primeng/contextmenu';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
@@ -25,7 +24,6 @@ import { AppComponent } from 'src/app/app.component';
         SliderModule,
         DialogModule,
         MultiSelectModule,
-        ContextMenuModule,
         DropdownModule,
         ButtonModule,
         ToastModule,

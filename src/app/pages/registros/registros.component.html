@@ -66,10 +66,11 @@ npm install primeicons --save
 https://primeng.org/treetable/filter
 https://primeng.org/table/selection
 -->
-<p-table  #dt1 [value]="registros"  [rows]="1"
-    [rowsPerPageOptions]="[5,10,15]" styleClass=" p-datatable-gridlines" [paginator]="true"
+
+<p-table [columns]="selectedColumns" [rowHover]="true" #dt1 [value]="registros" [rows]="1" [rowsPerPageOptions]="[5,10,15]"
+    styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [scrollable]="true" scrollHeight="550px" 
     [showCurrentPageReport]="true"
-    currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} registros"
+    currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} registros" [filterDelay]="0"
     [globalFilterFields]="['codmat','materia','paralelo','aula','ubicacion', 'funcion','fechaI', 'fechaF','codcar', 'carrera', 'facultad']">
     <ng-template pTemplate="caption">
         <div class="p-d-flex">
@@ -77,184 +78,203 @@ https://primeng.org/table/selection
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="dt1.filterGlobal(getEventValue($event), 'contains')"
                     placeholder="Buscar por:" />
-
             </span>
         </div>
         <div class="p-input-icon-right p-ml-auto">
             <form id="form" (submit)="cedulareg(cedula.value)">
-              <div class="p-fluid form__filter">
-                <div class="p-field">
-                  <span class="p-float-label">
-                    <input #cedula type="text" pInputText />
-                    <label for="cedula">Cedula</label>
-                  </span>
+                <div class="p-fluid form__filter">
+                    <div class="p-field">
+                        <br>
+                        <span class="p-float-label">
+                            <input #cedula type="text" pInputText />
+                            <label for="cedula">Cedula</label>
+                        </span>
+                    </div>
+                    <br>
+                    <div class="p-field">
+                        <button class="p-button-rounded" type="submit" pButton>Buscar</button>
+                    </div>
                 </div>
-                <div class="p-field">
-                  <button class="p-button-rounded" type="submit" pButton>Buscar</button>
-                </div>
-              </div>
             </form>
             <form id="form1" (submit)="yearg(year.value)">
                 <div class="p-fluid form__filter">
-                  <div class="p-field">
-                    <span class="p-float-label">
-                      <input #year type="text" pInputText />
-                      <label for="year">Año</label>
-                    </span>
-                  </div>
-                  <div class="p-field">
-                    <button class="p-button-rounded" type="submit" pButton>Buscar</button>
-                  </div>
+                    <div class="p-field">
+                        <span class="p-float-label">
+                            <input #year type="text" pInputText />
+                            <label for="year">Año</label>
+                        </span>
+                    </div>
+                    <br>
+                    <div class="p-field">
+                        <button class="p-button-rounded" type="submit" pButton>Buscar</button>
+                    </div>
                 </div>
-              </form>
-          </div>
-          
+            </form>
+            
+            <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+            selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" placeholder="Choose Columns"></p-multiSelect>
+        </div>
+        
     </ng-template>
 
-    <ng-template pTemplate="header">
+
+    <ng-template pTemplate="header" let-columns>
+
         <tr>
-            <th>Nº</th>
-            
-            <th style="min-width:8rem">
+            <th style="min-width:8rem;  background-color: rgb(192, 231, 231)">
+                Nº
+            </th>
+
+            <th style="min-width:8rem;  background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Codmat
                     <p-columnFilter type="text" field="codmat" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <!-- <th *ngFor="let col of columns">
+                {{col.header}}
+            </th> -->
+
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Materia
                     <p-columnFilter type="text" field="materia" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <!-- <th *ngFor="let col of columns">
+                {{col.header}}
+            </th> -->
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Paralelo
                     <p-columnFilter type="text" field="paralelo" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Horas
                     <p-columnFilter type="numeric" field="horas" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Aula
                     <p-columnFilter type="text" field="aula" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:9rem">
+            <th style="min-width:9rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Ubicacion
                     <p-columnFilter type="text" field="ubicacion" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Funcion
                     <p-columnFilter type="text" field="funcion" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem;background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     EST
                     <p-columnFilter type="numeric" field="est" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem;background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Numero Sesiones
                     <p-columnFilter type="numeric" field="nroSesiones" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:7rem">
+            <th style="min-width:7rem;background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Lunes
                     <p-columnFilter type="text" field="lunes" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem;background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Martes
                     <p-columnFilter type="text" field="martes" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:9rem">
+            <th style="min-width:9rem; background-color: rgb(192, 231, 231) ">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Miercoles
                     <p-columnFilter type="text" field="miercoles" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem;background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Jueves
                     <p-columnFilter type="text" field="jueves" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Viernes
                     <p-columnFilter type="text" field="viernes" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Sabado
                     <p-columnFilter type="text" field="sabado" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     HSimul
                     <p-columnFilter type="text" field="hSimul" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:7rem">
+            <th style="min-width:7rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Fecha Inicio
                     <p-columnFilter type="text" field="fechaI" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:7rem">
+            <th style="min-width:7rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Fecha Final
                     <p-columnFilter type="text" field="fechaF" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:7rem">
+            <th style="min-width:7rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Horario Final
                     <p-columnFilter type="text" field="horarioF" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     CodCar
                     <p-columnFilter type="text" field="codcar" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:8rem">
+            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Carrera
                     <p-columnFilter type="numeric" field="carrera" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <th style="min-width:9rem">
+            <th style="min-width:9rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Facultad
                     <p-columnFilter type="text" field="facultad" display="menu"></p-columnFilter>
                 </div>
             </th>
         </tr>
+
     </ng-template>
-    <ng-template pTemplate="body" let-registro>
+
+    <ng-template pTemplate="body" let-registro let-columns="columns">
 
         <tr *ngFor="let registro of registros; let i = index">
             <th scope="row">{{ i + 1 }}</th>
 
-            <td>{{registro.codmat}}</td>
+            <td>{{[registro.codmat]}}</td>
+
             <td>{{registro.materia}}</td>
             <td>{{registro.paralelo}}</td>
             <td>{{registro.horas}}</td>

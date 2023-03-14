@@ -1,19 +1,14 @@
 <div class="main-wrapper">
-    <app-sidebar></app-sidebar>
-
-    <app-header></app-header>
-    <div class="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <router-outlet></router-outlet>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <app-sidebar style="
+    position: absolute;
+    top: 32px;
+    left: 15px;">
+    </app-sidebar>
+    <app-header style="text-align: center;"></app-header>
+    <p-breadcrumb style="position: relative;
+    bottom: 50px;" [model]="items"></p-breadcrumb>
+    <div class="card-body">
+        <router-outlet ></router-outlet>
     </div>
-    <app-footer></app-footer>
+    <app-footer style="text-align: center;"></app-footer>
 </div>

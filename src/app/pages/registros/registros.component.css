@@ -1,0 +1,13 @@
+#form1 {
+  position: relative;
+  top: -100px;
+  left: 250px;
+}
+
+th {
+  background-color: rgb(168, 179, 236);
+}
+
+td{
+  background-color: rgb(177, 241, 243);
+}

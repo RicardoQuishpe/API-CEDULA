@@ -12,6 +12,10 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginatorModule } from "primeng/paginator";
 import {InputTextModule} from 'primeng/inputtext';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+
 
 @NgModule({
     declarations: [
@@ -32,6 +36,9 @@ import {InputTextModule} from 'primeng/inputtext';
         PaginatorModule,
         StaticModule,
         InputTextModule,
+        BreadcrumbModule,
+        DropdownModule,
+        MultiSelectModule
         
     ],
     

@@ -11,7 +11,10 @@ export class RegistroHttpService {
   readonly API_URL:string =  'http://172.31.5.24:8080/WSSIIEPN/webresources/SilaboEPN/carga/0501553408/2022/2';
   readonly CURL:string =  'http://172.31.5.24:8080/WSSIIEPN/webresources/SilaboEPN/carga/${cedula}/2022/2';  
   readonly YURL:string =  'http://172.31.5.24:8080/WSSIIEPN/webresources/SilaboEPN/carga/0501553408/${year}/2';  
-                                                                      
+  readonly cy_URL:string =  'http://172.31.5.24:8080/WSSIIEPN/webresources/SilaboEPN/carga/${cedula}/${year}/2';             
+  readonly Api_url1: string = 'http://172.31.5.24:8080/WSSIIEPN/webresources/SilaboEPN/carga/${{cedula}}/${{year}}/${{id}}';
+
+
   constructor (private httpClient:HttpClient) { }
 
 
@@ -31,7 +34,10 @@ gettwo(year:string ):Observable<RegistroModel[]> {
   return this.httpClient.get<RegistroModel[]>(
   this.YURL.replace('${year}',year)
 );
+
 }
+
+
 
 
 /*
@@ -47,6 +53,18 @@ getid(id:RegistroModel['id']):Observable<RegistroModel[]> {
 getAll():Observable<RegistroModel[]> {
   const url = `${this.API_URL}`;
   return this.httpClient.get<RegistroModel[]>(url);
+}
+gettree(cedula:string, year:string ):Observable<RegistroModel[]> {
+  return this.httpClient.get<RegistroModel[]>(
+  this.cy_URL.replace('${cedula}',cedula)
+);
+}
+regcy (cedula: string , year: string) {
+  this.registroHttpservices
+    .gettree(cedula, year).subscribe((response: RegistroModel[]) => {
+      this.registros = response;
+    });
+  console.log(this.registros);
 }
 */
 }
