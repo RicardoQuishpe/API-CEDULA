@@ -25,37 +25,40 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRegistros();
-    this.cedulareg;
-    this.yearg;
+    // this.cedulareg;
+    // this.yearg;
 
+
+    
     this.cols = [
       { field: 'codmat', header: 'Codmat' },
       { field: 'materia', header: 'Materia' },
-      { field: 'paralelo', header: 'Quantity' },
-      { field: 'horas', header: 'Name' },
-      { field: 'aula', header: 'Category' },
-      { field: 'ubicacion', header: 'Quantity' },
-      { field: 'funcion', header: 'Name' },
-      { field: 'est', header: 'Category' },
-      { field: 'nroSesiones', header: 'Quantity' },
-      { field: 'lunes', header: 'Name' },
-      { field: 'martes', header: 'Category' },
-      { field: 'miercoles', header: 'Quantity' },
-      { field: 'jueves', header: 'Name' },
-      { field: 'viernes', header: 'Category' },
-      { field: 'sabado', header: 'Quantity' },
-      { field: 'hSimul', header: 'Name' },
-      { field: 'fechaI', header: 'Category' },
-      { field: 'fechaF', header: 'Quantity' },
-      { field: 'horarioF', header: 'Name' },
-      { field: 'codcar', header: 'Category' },
-      { field: 'carrera', header: 'Quantity' },
-      { field: 'facultad', header: 'Quantity' },
+      // { field: 'paralelo', header: 'Paralelo' },
+      // { field: 'horas', header: 'Horas' },
+      // { field: 'aula', header: 'Aula' },
+      // { field: 'ubicacion', header: 'Ubicacion' },
+      // { field: 'funcion', header: 'Funcion' },
+      // { field: 'est', header: 'EST' },
+      // { field: 'nroSesiones', header: 'Numero Sesiones' },
+      // { field: 'lunes', header: 'Lunes' },
+      // { field: 'martes', header: 'Martes' },
+      // { field: 'miercoles', header: 'Miercoles' },
+      // { field: 'jueves', header: 'Jueves' },
+      // { field: 'viernes', header: 'Viernes' },
+      // { field: 'sabado', header: 'Sabado' },
+      // { field: 'hSimul', header: 'HSimul' },
+      // { field: 'fechaI', header: 'Fecha Inicio' },
+      // { field: 'fechaF', header: 'Fecha Final' },
+      // { field: 'horarioF', header: 'Horario Final' },
+      // { field: 'codcar', header: 'Codcar' },
+      // { field: 'carrera', header: 'Carrera' },
+      // { field: 'facultad', header: 'Facultad' },
   ];
 
   this._selectedColumns = this.cols;
 
   }
+  
 
   getRegistros() {
     this.registroHttpservices.getAll().subscribe(
@@ -66,23 +69,24 @@ export class RegistroComponent implements OnInit {
     );
   }
 
-  cedulareg(cedula: string) {
-    this.registroHttpservices
-      .getOne(cedula).subscribe((response: RegistroModel[]) => {
-        this.registros = response;
-      });
-    console.log(this.registros);
-  }
+  // cedulareg(cedula: string) {
+  //   this.registroHttpservices
+  //     .getOne(cedula).subscribe((response: RegistroModel[]) => {
+  //       this.registros = response;
+  //     });
+  //   console.log(this.registros);
+  // }
 
 
-  yearg(year: string) {
-    this.registroHttpservices
-      .gettwo(year).subscribe((response: RegistroModel[]) => {
-        this.registros = response;
-      });
-    console.log(this.registros);
-  }
+  // yearg(year: string) {
+  //   this.registroHttpservices
+  //     .gettwo(year).subscribe((response: RegistroModel[]) => {
+  //       this.registros = response;
+  //     });
+  //   console.log(this.registros);
+  // }
 
+  
   Datos(cedula: string, year: string, id:string) {
     this.registroHttpservices
     .datos(cedula, year, id).subscribe((response: RegistroModel[]) => {

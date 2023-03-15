@@ -80,22 +80,23 @@ https://primeng.org/table/selection
                     placeholder="Buscar por:" />
             </span>
         </div>
+        <br>
         <div class="p-input-icon-right p-ml-auto">
             <form id="form" (submit)="Datos(cedula.value, year.value, id.value)">
                 <div class="p-fluid form__filter" style="display: flex;">
         
                   <span>
-                    <input placeholder="cédula" #cedula type="number" pInputText style="margin-left: -20px;" />
+                    <input placeholder="Cédula" #cedula type="number" pInputText  />
                   </span>
         
                   <span>
-                    <input placeholder="fecha" #year type="date" pInputText style="margin-left: -10px; " />
+                    <input placeholder="Año" #year type="number" pInputText style="margin-left: 10px; " />
                   </span>
                   
         
-                  <span class="p-float-label">
+                  <span class="p-float-label" style="margin-left: 20px; ">
                     <p-dropdown #id type="text"  [options]="[{label:'1', value:1}, {label:'2', value:2}]"></p-dropdown>
-                    <label for="id" style="color: rgb(255, 255, 255);">ID</label>
+                    <label for="id" style="color: rgb(255, 255, 255)">ID</label>
                   </span>
         
                   <div class="p-field" style="margin-left: 5px;">
@@ -104,7 +105,7 @@ https://primeng.org/table/selection
                   <br>
                 </div>
               </form>
-            
+            <br>
             <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
             selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" placeholder="Choose Columns"></p-multiSelect>
         </div>
@@ -115,29 +116,29 @@ https://primeng.org/table/selection
     <ng-template pTemplate="header" let-columns>
 
         <tr>
-            <th style="min-width:8rem;  background-color: rgb(192, 231, 231)">
+            <!-- <th style="min-width:8rem;  background-color: rgb(192, 231, 231)">
                 Nº
-            </th>
+            </th> -->
 
-            <th style="min-width:8rem;  background-color: rgb(192, 231, 231)">
+            <!-- <th style="min-width:8rem;  background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Codmat
                     <p-columnFilter type="text" field="codmat" display="menu"></p-columnFilter>
                 </div>
-            </th>
-            <!-- <th *ngFor="let col of columns">
-                {{col.header}}
             </th> -->
+            <th >Codmat</th>
+             <th *ngFor="let col of columns">
+                {{col.header}}
+            </th> 
 
-            <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
+            
+<!--             
+    <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Materia
                     <p-columnFilter type="text" field="materia" display="menu"></p-columnFilter>
                 </div>
             </th>
-            <!-- <th *ngFor="let col of columns">
-                {{col.header}}
-            </th> -->
             <th style="min-width:8rem; background-color: rgb(192, 231, 231)">
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Paralelo
@@ -258,18 +259,25 @@ https://primeng.org/table/selection
                     <p-columnFilter type="text" field="facultad" display="menu"></p-columnFilter>
                 </div>
             </th>
-        </tr>
+        </tr> -->
 
     </ng-template>
 
     <ng-template pTemplate="body" let-registro let-columns="columns">
 
-        <tr *ngFor="let registro of registros; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
+        <tr *ngFor="let registro of registros;">
+            <!-- <th scope="row">{{ i + 1 }}</th> -->
 
             <td>{{[registro.codmat]}}</td>
+            <td *ngFor="let col of columns">
+                {{[col.registro]}} 
+            </td>
 
-            <td>{{registro.materia}}</td>
+            
+<!--          
+    <td *ngFor="let col of columns">
+                {{registro.materia}}
+            </td>
             <td>{{registro.paralelo}}</td>
             <td>{{registro.horas}}</td>
             <td>{{registro.aula}}</td>
@@ -289,7 +297,7 @@ https://primeng.org/table/selection
             <td>{{registro.horarioF}}</td>
             <td>{{registro.codcar}}</td>
             <td>{{registro.carrera}}</td>
-            <td>{{registro.facultad}}</td>
+            <td>{{registro.facultad}}</td>  -->
         </tr>
 
     </ng-template>

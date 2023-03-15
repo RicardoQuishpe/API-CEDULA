@@ -19,10 +19,12 @@ export class RegistroHttpService {
   constructor (private httpClient:HttpClient) { }
 
 
-getAll():Observable<RegistroModel[]>{
+getAll(){
+  
   const url = `${this.API_URL}`;
   const response = this.httpClient.get<RegistroModel[]>(url)
   return response 
+  
  }
 
  getOne(cedula:string):Observable<RegistroModel[]> {

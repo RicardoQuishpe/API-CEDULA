@@ -11,9 +11,9 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
-import { ProgressBarModule } from 'primeng/progressbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { AppComponent } from 'src/app/app.component';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 @NgModule({
     imports: [
@@ -24,16 +24,17 @@ import { AppComponent } from 'src/app/app.component';
         SliderModule,
         DialogModule,
         MultiSelectModule,
+        ContextMenuModule,
         DropdownModule,
         ButtonModule,
         ToastModule,
         InputTextModule,
-        ProgressBarModule,
         HttpClientModule,
         FormsModule
     ],
     declarations: [AppComponent],
     bootstrap: [AppComponent],
+    
 
 })
 
